@@ -19,8 +19,9 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
-a:hover {
-  color: #535bf2;
+a:hover,
+.article-title-link:hover {
+  color: skyblue;
 }
 
 body {
@@ -56,7 +57,7 @@ button:focus-visible {
 }
 
 .header-text {
-  border: 1px solid blue;
+  border: 1px solid skyblue;
   padding: 20px;
 }
 
@@ -69,7 +70,7 @@ button:focus-visible {
 
 .nav-link {
   padding: 0 20px;
-  color: white;
+  color: rgba(255, 255, 255, 0.87);
 }
 
 .article-list {
@@ -83,6 +84,10 @@ ul {
   list-style: none;
 }
 
+.article-title-link {
+  color: rgba(255, 255, 255, 0.87);
+}
+
 .article-home {
   border: 1px solid lightcoral;
   padding: 20px;
@@ -94,14 +99,46 @@ ul {
   width: 200px;
 }
 
-.article-details-home {
+.article-img {
+  height: 300px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.article-details-home,
+.article-headings {
   display: flex;
   justify-content: space-around;
 }
 
+div.article-headings {
+  margin: 20px 0px;
+}
+
+.article-img-body {
+  display: flex;
+}
+
+.article-body {
+  display: flex;
+  padding: 0 40px;
+  margin: 0;
+}
+
 @media (max-width: 850px) {
-  .article-details-home {
+  .article-details-home,
+  .article-headings,
+  .article-img-body {
     display: flex;
     flex-direction: column;
   }
+
+  .article-body {
+  display: flex;
+  padding: 10px 0px 30px;
+}
+
+h2 {
+  margin-top: 20px;
+}
 }

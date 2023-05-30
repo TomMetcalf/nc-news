@@ -9,3 +9,10 @@ export function fetchArticles() {
     return res.data;
   });
 }
+
+export function fetchArticleById(article_id) {
+  return ncNewsApi.get(`/articles/${article_id}`).then((res) => {
+    return res.data;
+  });
+}
+

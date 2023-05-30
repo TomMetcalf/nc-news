@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { fetchArticles } from '../utils';
 import BeatLoader from 'react-spinners/BeatLoader';
+import { Link } from 'react-router-dom';
 
 export default function ArticleList() {
   const [articleList, setArticleList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState();
 
   useEffect(() => {
+    setIsLoading(true);
     fetchArticles()
       .then((articles) => {
         return articles;
@@ -39,7 +41,6 @@ export default function ArticleList() {
             title,
             author,
             topic,
-            created_at,
             article_img_url,
             comment_count,
           } = article;
@@ -55,24 +56,30 @@ export default function ArticleList() {
             second: 'numeric',
             timeZone: 'UTC',
           };
-          const formattedDate = dateObj.toLocaleString('en-US', options);
+          const formattedDate = dateObj.toLocaleString('en-UK', options);
 
           return (
             <li key={article_id}>
               <article className="article-home">
-                <h2>{title}</h2>
-
-                <img
-                  className="article-image-list"
-                  src={article_img_url}
-                  alt={title}
-                />
+                <Link to={`/articles/${article.article_id}`}>
+                  <h2 className="article-title-link">{title}</h2>
+                </Link>
+                <Link to={`/articles/${article.article_id}`}>
+                  <img
+                    className="article-image-list"
+                    src={article_img_url}
+                    alt={title}
+                  />
+                </Link>
                 <div className="article-details-home">
                   <p>Author: {author}</p>
                   <p>Topic: {topic}</p>
                   <p>Comments: {comment_count}</p>
                   <p>Published: {formattedDate}</p>
                 </div>
+                <Link to={`/articles/${article.article_id}`}>
+                  Click to view this article
+                </Link>
               </article>
             </li>
           );
