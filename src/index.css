@@ -61,6 +61,8 @@ button:focus-visible {
 }
 
 .nav {
+  display: flex;
+  justify-content: space-evenly;
   border: 1px solid orange;
   padding: 20px;
 }
@@ -95,5 +97,11 @@ ul {
 .article-details-home {
   display: flex;
   justify-content: space-around;
+}
 
+@media (max-width: 850px) {
+  .article-details-home {
+    display: flex;
+    flex-direction: column;
+  }
 }
