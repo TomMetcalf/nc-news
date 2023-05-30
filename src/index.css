@@ -61,10 +61,39 @@ button:focus-visible {
 }
 
 .nav {
-  border: 1px solid lightcoral;
+  border: 1px solid orange;
   padding: 20px;
 }
 
 .nav-link {
   padding: 0 20px;
+  color: white;
+}
+
+.article-list {
+  border: 1px solid greenyellow;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.article-home {
+  border: 1px solid lightcoral;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.article-image-list {
+  height: 200px;
+  width: 200px;
+}
+
+.article-details-home {
+  display: flex;
+  justify-content: space-around;
+
 }
