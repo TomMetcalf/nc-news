@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { fetchArticleById } from '../utils';
+import { fetchArticleById, patchArticleVote } from '../utils';
 import BeatLoader from 'react-spinners/BeatLoader';
 import Comment from './Comment';
 
@@ -16,6 +16,34 @@ export default function singleArticle() {
       setIsLoading(false);
     });
   }, [article_id]);
+
+  const upVote = (article_id) => {
+    const updatedArticle = {
+      ...currentArticle,
+      votes: currentArticle.votes + 1,
+    };
+
+    setCurrentArticle(updatedArticle);
+    patchArticleVote(article_id, +1).catch((err) => {
+      console.log(`Failed to update + vote for ${article_id}`);
+    });
+
+    return updatedArticle;
+  };
+
+  const downVote = (article_id) => {
+    const updatedArticle = {
+      ...currentArticle,
+      votes: currentArticle.votes - 1,
+    };
+
+    setCurrentArticle(updatedArticle);
+    patchArticleVote(article_id, -1).catch((err) => {
+      console.log(`Failed to update - vote for ${article_id}`);
+    });
+
+    return updatedArticle;
+  };
 
   if (isLoading) {
     return (
@@ -57,13 +85,17 @@ export default function singleArticle() {
         <p className="article-detail">Author: {author}</p>
         <p className="article-detail">Published: {formattedDate}</p>
       </div>
-      <Comment articleId={article_id} />
-      <Link to={'/'}>Click to return to main article list</Link>
       <div>
         <p>Votes: {votes}</p>
-        <button className="vote-button">+ Vote</button>
-        <button className="vote-button">- Vote</button>
+        <button className="vote-button" onClick={() => downVote(article_id)}>
+          - Vote
+        </button>
+        <button className="vote-button" onClick={() => upVote(article_id)}>
+          + Vote
+        </button>
       </div>
+      <Comment articleId={article_id} />
+      <Link to={'/'}>Click to return to main article list</Link>
       <Link to={'/'}>Click to return to article list</Link>
     </main>
   );
