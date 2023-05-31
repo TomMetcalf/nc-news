@@ -7,6 +7,8 @@ export default function CommentAdder() {
           id="new-comment"
           mutliline="true"
         ></textarea>
+        <label htmlFor="">Username</label>
+        <input type="text" />
         <button className="post-comment-btn">Post comment</button>
       </form>
     );
