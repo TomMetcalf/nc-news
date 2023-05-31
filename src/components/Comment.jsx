@@ -29,37 +29,43 @@ export default function Comment({ articleId }) {
 
   return (
     <section>
-      <ul>
-        {comments.map((comment) => {
-          const { comment_id, body, author, votes } = comment;
+      {comments.length === 0 ? (
+        <p>No comments available.</p>
+      ) : (
+        <ul>
+          {comments.map((comment) => {
+            const { comment_id, body, author, votes } = comment;
 
-          const dateString = comment.created_at;
-          const dateObj = new Date(dateString);
-          const options = {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-            second: 'numeric',
-            timeZone: 'UTC',
-          };
-          const formattedDate = dateObj.toLocaleString('en-UK', options);
+            const dateString = comment.created_at;
+            const dateObj = new Date(dateString);
+            const options = {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+              hour: 'numeric',
+              minute: 'numeric',
+              second: 'numeric',
+              timeZone: 'UTC',
+            };
+            const formattedDate = dateObj.toLocaleString('en-UK', options);
 
-          return (
-            <li key={comment_id}>
-              <section className="comments-section">
-                <p>{body}</p>
-                <div className="comments-flex">
-                  <p className="comment-detail">Posted by: {author}</p>
-                  <p className="comment-detail">Date posted: {formattedDate}</p>
-                  <p className="comment-detail">Votes: {votes}</p>
-                </div>
-              </section>
-            </li>
-          );
-        })}
-      </ul>
+            return (
+              <li key={comment_id}>
+                <section className="comments-section">
+                  <p>{body}</p>
+                  <div className="comments-flex">
+                    <p className="comment-detail">Posted by: {author}</p>
+                    <p className="comment-detail">
+                      Date posted: {formattedDate}
+                    </p>
+                    <p className="comment-detail">Votes: {votes}</p>
+                  </div>
+                </section>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </section>
   );
 }
