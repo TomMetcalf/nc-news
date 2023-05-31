@@ -40,3 +40,12 @@ export function patchArticleVote(article_id, votes) {
     return data;
   });
 }
+
+export function fetchUsers() {
+  return ncNewsApi
+    .get('/users')
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => console.log(err));
+}

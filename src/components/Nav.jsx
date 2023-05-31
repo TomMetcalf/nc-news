@@ -9,6 +9,9 @@ export default function Nav() {
       <Link className="nav-link" to="/topics">
         Topics
       </Link>
+      <Link className="nav-link" to="/users">
+        Users
+      </Link>
     </nav>
   );
 }
