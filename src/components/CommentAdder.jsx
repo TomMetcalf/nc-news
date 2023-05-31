@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
 import { postComment } from '../utils';
 
-export default function CommentAdder({setComments}) {
+export default function CommentAdder({ setComments }) {
   const [newComment, setNewComment] = useState('');
   const { user } = useContext(UserContext);
   const { article_id } = useParams();
@@ -23,12 +23,11 @@ export default function CommentAdder({setComments}) {
 
     postComment(user.username, newComment, article_id).then(
       (newCommentFromApi) => {
-
-        setNewComment('')
+        setNewComment('');
         setComments((currComments) => {
-            console.log(currComments)
-            return [newCommentFromApi, ...currComments];
-        })
+          console.log(currComments);
+          return [...currComments, newCommentFromApi];
+        });
       }
     );
   };

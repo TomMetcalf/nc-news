@@ -28,17 +28,20 @@ export default function Comment({ articleId }) {
     );
   }
 
+
+const reversedComments = [...comments].reverse();
+
   return (
     <section className="comments-container">
       <section>
         <CommentAdder articleId={articleId} setComments={setComments} />
       </section>
       <section>
-        {comments.length === 0 ? (
+        {reversedComments.length === 0 ? (
           <p>No comments available.</p>
         ) : (
           <ul>
-            {comments.map((comment) => {
+            {reversedComments.map((comment) => {
               const { comment_id, body, author, votes } = comment;
 
               const dateString = comment.created_at;

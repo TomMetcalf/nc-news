@@ -61,8 +61,8 @@ export function postComment( username, newCommentText, article_id ) {
 
   return ncNewsApi
     .post(`/articles/${article_id}/comments`, postCommentBody)
-    .then((data) => {
-      return data;
+    .then((res) => {
+      return res.data.comment;
     })
     .catch((err) => console.log(err));
 }
