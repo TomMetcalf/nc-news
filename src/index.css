@@ -164,6 +164,33 @@ h2 {
   margin-top: 0px;
 }
 
+.comments-container {
+border: 1px solid yellow;
+  padding: 10px;
+}
+
+#new-comment {
+  width: 90%;
+  height: 80px;
+margin: 20px auto;
+padding: 10px;
+font-size: 1rem;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-comment-btn {
+width: 200px;
+margin: 0 auto;
+}
+
+.add-comment-label {
+margin-top: 10px;
+}
+
 @media (max-width: 850px) {
   .article-details-home,
   .article-headings,
