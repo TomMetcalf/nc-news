@@ -17,7 +17,17 @@ export default function singleArticle() {
     });
   }, [article_id]);
 
+  const checkUserOnline = () => {
+    if (!navigator.onLine) {
+      alert(
+        "You are currently offline, so any votes made won't be counted. Please reconnect to the internet and then resubmit your vote."
+      );
+    }
+  };
+
   const upVote = (article_id) => {
+    checkUserOnline();
+
     const updatedArticle = {
       ...currentArticle,
       votes: currentArticle.votes + 1,
@@ -32,6 +42,8 @@ export default function singleArticle() {
   };
 
   const downVote = (article_id) => {
+    checkUserOnline();
+
     const updatedArticle = {
       ...currentArticle,
       votes: currentArticle.votes - 1,
