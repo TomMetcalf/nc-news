@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { fetchArticleById } from '../utils';
+import { fetchArticleById, patchArticleVote } from '../utils';
 import BeatLoader from 'react-spinners/BeatLoader';
 import Comment from './Comment';
 
@@ -17,6 +17,46 @@ export default function singleArticle() {
     });
   }, [article_id]);
 
+  const checkUserOnline = () => {
+    if (!navigator.onLine) {
+      alert(
+        "You are currently offline, so any votes made won't be counted. Please reconnect to the internet and then resubmit your vote."
+      );
+    }
+  };
+
+  const upVote = (article_id) => {
+    checkUserOnline();
+
+    const updatedArticle = {
+      ...currentArticle,
+      votes: currentArticle.votes + 1,
+    };
+
+    setCurrentArticle(updatedArticle);
+    patchArticleVote(article_id, +1).catch((err) => {
+      console.log(`Failed to update + vote for ${article_id}`);
+    });
+
+    return updatedArticle;
+  };
+
+  const downVote = (article_id) => {
+    checkUserOnline();
+
+    const updatedArticle = {
+      ...currentArticle,
+      votes: currentArticle.votes - 1,
+    };
+
+    setCurrentArticle(updatedArticle);
+    patchArticleVote(article_id, -1).catch((err) => {
+      console.log(`Failed to update - vote for ${article_id}`);
+    });
+
+    return updatedArticle;
+  };
+
   if (isLoading) {
     return (
       <BeatLoader
@@ -30,7 +70,7 @@ export default function singleArticle() {
     );
   }
 
-  const { title, article_img_url, body, topic, author } = currentArticle;
+  const { title, article_img_url, body, topic, author, votes } = currentArticle;
 
   const dateString = currentArticle.created_at;
   const dateObj = new Date(dateString);
@@ -57,8 +97,18 @@ export default function singleArticle() {
         <p className="article-detail">Author: {author}</p>
         <p className="article-detail">Published: {formattedDate}</p>
       </div>
+      <div>
+        <p>Votes: {votes}</p>
+        <button className="vote-button" onClick={() => downVote(article_id)}>
+          - Vote
+        </button>
+        <button className="vote-button" onClick={() => upVote(article_id)}>
+          + Vote
+        </button>
+      </div>
       <Comment articleId={article_id} />
       <Link to={'/'}>Click to return to main article list</Link>
+      <Link to={'/'}>Click to return to article list</Link>
     </main>
   );
 }
