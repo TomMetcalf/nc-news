@@ -108,7 +108,6 @@ export default function singleArticle() {
       </div>
       <Comment articleId={article_id} />
       <Link to={'/'}>Click to return to main article list</Link>
-      <Link to={'/'}>Click to return to article list</Link>
     </main>
   );
 }

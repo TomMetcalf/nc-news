@@ -9,10 +9,15 @@ import UserList from './components/UserList';
 import { useEffect, useState } from 'react';
 import { fetchUsers } from './utils';
 import BeatLoader from 'react-spinners/BeatLoader';
+import { UserContext } from './contexts/UserContext';
 
 function App() {
   const [userList, setUserList] = useState([]);
   const [isLoading, setIsLoading] = useState();
+
+  const [user, setUser] = useState({
+    username: 'Logged Out',
+  });
 
   useEffect(() => {
     setIsLoading(true);
@@ -37,19 +42,21 @@ function App() {
 
   return (
     <BrowserRouter>
-      <>
-        <Header />
-        <Nav />
-        <Routes>
-          <Route path="/" element={<ArticleList />}></Route>
-          <Route path="/topics" element={<TopicList />}></Route>
-          <Route path="/articles/:article_id" element={<Article />}></Route>
-          <Route
-            path="/users"
-            element={<UserList userList={userList} />}
-          ></Route>
-        </Routes>
-      </>
+      <UserContext.Provider value={{user, setUser}}>
+        <main>
+          <Header />
+          <Nav />
+          <Routes>
+            <Route path="/" element={<ArticleList />}></Route>
+            <Route path="/topics" element={<TopicList />}></Route>
+            <Route path="/articles/:article_id" element={<Article />}></Route>
+            <Route
+              path="/users"
+              element={<UserList userList={userList} />}
+            ></Route>
+          </Routes>
+        </main>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }

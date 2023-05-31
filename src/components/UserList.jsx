@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import BeatLoader from 'react-spinners/BeatLoader';
+import { UserContext } from '../contexts/UserContext';
 
 export default function UserList({ userList }) {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState();
+  const { setUser } = useContext(UserContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -38,6 +40,14 @@ export default function UserList({ userList }) {
                   src={user.avatar_url}
                   alt={user.name}
                 />
+                <button
+                  onClick={() => {
+                    setUser(user);
+                  }}
+                  className="select-user-btn"
+                >
+                  Select this user
+                </button>
               </section>
             </li>
           );

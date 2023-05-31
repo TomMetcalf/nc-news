@@ -29,10 +29,10 @@ export default function Comment({ articleId }) {
   }
 
   return (
-    <section className='comments-container'>
-        <section>
-            <CommentAdder />
-        </section>
+    <section className="comments-container">
+      <section>
+        <CommentAdder articleId={articleId} setComments={setComments} />
+      </section>
       <section>
         {comments.length === 0 ? (
           <p>No comments available.</p>
