@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { fetchArticleById } from '../utils';
 import BeatLoader from 'react-spinners/BeatLoader';
+import Comment from './Comment';
 
 export default function singleArticle() {
   const [currentArticle, setCurrentArticle] = useState({});
@@ -45,17 +46,19 @@ export default function singleArticle() {
   const formattedDate = dateObj.toLocaleString('en-UK', options);
 
   return (
-    <main>
+    <main className="article-container">
       <h2>{title}</h2>
       <div className="article-img-body">
         <p className="article-body">{body}</p>
         <img className="article-img" src={article_img_url} alt={title} />
       </div>
       <div className="article-headings">
-        <p>Category: {topic}</p>
-        <p>Author: {author}</p>
-        <p>Published: {formattedDate}</p>
+        <p className="article-detail">Category: {topic}</p>
+        <p className="article-detail">Author: {author}</p>
+        <p className="article-detail">Published: {formattedDate}</p>
       </div>
+      <Comment articleId={article_id} />
+      <Link to={'/'}>Click to return to main article list</Link>
       <div>
         <p>Votes: {votes}</p>
         <button className="vote-button">+ Vote</button>
