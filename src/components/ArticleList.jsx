@@ -72,13 +72,17 @@ export default function ArticleList() {
                   />
                 </Link>
                 <div className="article-details-home">
-                  <p>Author: {author}</p>
-                  <p>Topic: {topic}</p>
-                  <p>Comments: {comment_count}</p>
-                  <p>Published: {formattedDate}</p>
+                  <p className="article-list-detail">Author: {author}</p>
+                  <p className="article-list-detail">Topic: {topic}</p>
+                  <p className="article-list-detail">
+                    Comments: {comment_count}
+                  </p>
+                  <p className="article-list-detail">
+                    Published: {formattedDate}
+                  </p>
                 </div>
                 <Link to={`/articles/${article.article_id}`}>
-                  Click to view this article
+                  <p className="view-article">Click to view this article</p>
                 </Link>
               </article>
             </li>
