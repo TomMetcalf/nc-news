@@ -29,7 +29,7 @@ export default function singleArticle() {
     );
   }
 
-  const { title, article_img_url, body, topic, author } = currentArticle;
+  const { title, article_img_url, body, topic, author, votes } = currentArticle;
 
   const dateString = currentArticle.created_at;
   const dateObj = new Date(dateString);
@@ -55,6 +55,11 @@ export default function singleArticle() {
         <p>Category: {topic}</p>
         <p>Author: {author}</p>
         <p>Published: {formattedDate}</p>
+      </div>
+      <div>
+        <p>Votes: {votes}</p>
+        <button className="vote-button">+ Vote</button>
+        <button className="vote-button">- Vote</button>
       </div>
       <Link to={'/'}>Click to return to article list</Link>
     </main>
