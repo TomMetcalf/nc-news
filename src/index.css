@@ -164,6 +164,94 @@ h2 {
   margin-top: 0px;
 }
 
+.comments-container {
+  border: 1px solid yellow;
+  padding: 10px;
+}
+
+#new-comment {
+  width: 90%;
+  height: 80px;
+  margin: 20px auto;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-comment-btn {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.add-comment-label {
+  margin-top: 10px;
+}
+
+.vote-button {
+  margin: 0px 20px 20px;
+}
+
+.avatar-img {
+  height: 150px;
+  width: 150px;
+  margin: 10px auto;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid yellow;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.select-user-btn {
+  width: 250px;
+  margin: 10px auto;
+}
+
+.form-username {
+  display: flex;
+  margin: 0 auto;
+}
+
+.username-details {
+  margin: 0 5px 10px;
+}
+
+.comment-warning {
+  background-color: rgb(234, 195, 195);
+  color: red;
+  padding: 10px;
+  font-weight: 600;
+  width: 90%;
+  margin: 0 auto 20px;
+}
+
+.comment-user-link {
+  padding-left: 10px;
+  color: #242424;
+}
+
+.comment-user-link:hover {
+  color: #4b4a4a;
+}
+
+.user-warning {
+  display: flex;
+}
+
+
+.topic-list-card {
+  border: 1px solid rgb(255, 0, 72);
+  padding: 10px;
+  margin-top: 20px;
+}
+
 @media (max-width: 850px) {
   .article-details-home,
   .article-headings,
@@ -191,12 +279,8 @@ h2 {
     margin-top: 5px;
   }
 
-  
-}
-
-
-
-
-.vote-button {
-  margin: 0px 20px 20px;
+  .comment-warning, .comment-user-link {
+    display: flex;
+    flex-direction: column;
+  }
 }
