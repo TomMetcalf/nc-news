@@ -51,7 +51,7 @@ export default function singleArticle() {
 
     setCurrentArticle(updatedArticle);
     patchArticleVote(article_id, -1).catch((err) => {
-      console.log(`Failed to update - vote for ${article_id}`);
+      console.log(`Failed to update vote for ${article_id}. Please try again.`);
     });
 
     return updatedArticle;

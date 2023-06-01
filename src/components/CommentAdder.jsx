@@ -24,15 +24,18 @@ export default function CommentAdder({ setComments }) {
       return;
     }
 
-    postComment(user.username, newComment, article_id).then(
-      (newCommentFromApi) => {
+    postComment(user.username, newComment, article_id)
+      .then((newCommentFromApi) => {
         setNewComment('');
         setComments((currComments) => {
-          console.log(currComments);
           return [...currComments, newCommentFromApi];
         });
-      }
-    );
+      })
+      .catch((err) => {
+        console.log(
+          `Failed to add comment for ${article_id}. Please try again.`
+        );
+      });
   };
 
   const handleTextareaFocus = () => {
@@ -45,9 +48,10 @@ export default function CommentAdder({ setComments }) {
         Add a comment:
       </label>
       <textarea
+        value={newComment}
         name="new-comment"
         id="new-comment"
-        mutliline="true"
+        multiline="true"
         onChange={(e) => setNewComment(e.target.value)}
         onFocus={handleTextareaFocus}
       ></textarea>
@@ -58,7 +62,7 @@ export default function CommentAdder({ setComments }) {
         <span className="username-details">{user.username}</span>
       </div>
       {loginAlert && (
-        <div className='user-warning'>
+        <div className="user-warning">
           <p className="comment-warning">
             Please log in as a user to post a comment.
             <Link className="comment-user-link" to={'/users'}>
