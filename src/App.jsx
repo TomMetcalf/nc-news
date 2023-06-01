@@ -6,20 +6,11 @@ import ArticleList from './components/ArticleList';
 import TopicList from './components/TopicList';
 import Article from './components/Article';
 import UserList from './components/UserList';
-import { useState } from 'react';
-//import { UserContext } from './contexts/UserContext';
 
 function App() {
-  const [userList, setUserList] = useState([]);
-
-  // const [user, setUser] = useState({
-  //   username: 'Logged Out',
-  // });
-
   return (
     <div>
       <BrowserRouter>
-        {/* <UserContext.Provider value={{ user, setUser }}> */}
         <Header />
         <Nav />
         <Routes>
@@ -28,10 +19,9 @@ function App() {
           <Route path="/articles/:article_id" element={<Article />}></Route>
           <Route
             path="/users"
-            element={<UserList userList={userList} setUserList={setUserList} />}
+            element={<UserList />}
           ></Route>
         </Routes>
-        {/* </UserContext.Provider> */}
       </BrowserRouter>
     </div>
   );
