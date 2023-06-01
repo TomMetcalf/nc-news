@@ -6,58 +6,34 @@ import ArticleList from './components/ArticleList';
 import TopicList from './components/TopicList';
 import Article from './components/Article';
 import UserList from './components/UserList';
-import { useEffect, useState } from 'react';
-import { fetchUsers } from './utils';
-import BeatLoader from 'react-spinners/BeatLoader';
-import { UserContext } from './contexts/UserContext';
+import { useState } from 'react';
+//import { UserContext } from './contexts/UserContext';
 
 function App() {
   const [userList, setUserList] = useState([]);
-  const [isLoading, setIsLoading] = useState();
 
-  const [user, setUser] = useState({
-    username: 'Logged Out',
-  });
-
-  useEffect(() => {
-    setIsLoading(true);
-    fetchUsers().then((users) => {
-      setUserList(users);
-      setIsLoading(false);
-    });
-  }, []);
-
-  if (isLoading) {
-    return (
-      <BeatLoader
-        color={'#ffffff'}
-        loading={isLoading}
-        size={30}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-        margin={20}
-      />
-    );
-  }
+  // const [user, setUser] = useState({
+  //   username: 'Logged Out',
+  // });
 
   return (
-    <BrowserRouter>
-      <UserContext.Provider value={{user, setUser}}>
-        <main>
-          <Header />
-          <Nav />
-          <Routes>
-            <Route path="/" element={<ArticleList />}></Route>
-            <Route path="/topics" element={<TopicList />}></Route>
-            <Route path="/articles/:article_id" element={<Article />}></Route>
-            <Route
-              path="/users"
-              element={<UserList userList={userList} />}
-            ></Route>
-          </Routes>
-        </main>
-      </UserContext.Provider>
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        {/* <UserContext.Provider value={{ user, setUser }}> */}
+        <Header />
+        <Nav />
+        <Routes>
+          <Route path="/" element={<ArticleList />}></Route>
+          <Route path="/topics" element={<TopicList />}></Route>
+          <Route path="/articles/:article_id" element={<Article />}></Route>
+          <Route
+            path="/users"
+            element={<UserList userList={userList} setUserList={setUserList} />}
+          ></Route>
+        </Routes>
+        {/* </UserContext.Provider> */}
+      </BrowserRouter>
+    </div>
   );
 }
 

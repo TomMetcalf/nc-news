@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
-import { postComment } from '../utils';
+import { postComment } from '../api';
 import { Link } from 'react-router-dom';
 
 export default function CommentAdder({ setComments }) {
@@ -10,6 +10,8 @@ export default function CommentAdder({ setComments }) {
   const { article_id } = useParams();
   const [loginAlert, setLoginAlert] = useState(false);
   const [commentAlert, setCommentAlert] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [successfulPost, setSuccessfulPost] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,21 +26,25 @@ export default function CommentAdder({ setComments }) {
       return;
     }
 
+    setButtonDisabled(true);
+
     postComment(user.username, newComment, article_id)
       .then((newCommentFromApi) => {
         setNewComment('');
+        setSuccessfulPost(true);
         setComments((currComments) => {
           return [...currComments, newCommentFromApi];
         });
+        setButtonDisabled(false);
       })
       .catch((err) => {
-        console.log(
-          `Failed to add comment for ${article_id}. Please try again.`
-        );
+        alert(`Failed to post comment '${newComment}' Please try again.`);
+        setButtonDisabled(false);
       });
   };
 
   const handleTextareaFocus = () => {
+    setSuccessfulPost(false);
     setCommentAlert(false);
   };
 
@@ -71,10 +77,17 @@ export default function CommentAdder({ setComments }) {
           </p>
         </div>
       )}
+      {successfulPost && (
+        <p className="successful-comment">
+          You're comment was added successfully below!
+        </p>
+      )}
       {commentAlert && (
         <p className="comment-warning">Please add a comment before posting!</p>
       )}
-      <button className="post-comment-btn">Post comment</button>
+      <button className="post-comment-btn" disabled={buttonDisabled}>
+        Post comment
+      </button>
     </form>
   );
 }

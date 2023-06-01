@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react';
-import { fetchArticles } from '../api';
+import { fetchArticlesByTopic } from '../api';
+import { Link, useParams } from 'react-router-dom';
 import BeatLoader from 'react-spinners/BeatLoader';
-import { Link } from 'react-router-dom';
 
-export default function ArticleList() {
-  const [articleList, setArticleList] = useState([]);
+export default function TopicFilteredList() {
+  const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState();
+  const { selectedTopic } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
-    fetchArticles()
+    fetchArticlesByTopic(selectedTopic)
       .then((articles) => {
         return articles;
       })
       .then((articles) => {
-        setArticleList(articles.articles);
+        setArticles(articles);
         setIsLoading(false);
       });
   }, []);
@@ -33,9 +34,9 @@ export default function ArticleList() {
   }
 
   return (
-    <main className="article-list">
+    <main>
       <ul>
-        {articleList.map((article) => {
+        {articles.map((article) => {
           const {
             article_id,
             title,

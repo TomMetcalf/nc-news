@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchCommentsByArticleId } from '../utils';
+import { fetchCommentsByArticleId } from '../api';
 import BeatLoader from 'react-spinners/BeatLoader';
 import CommentAdder from './CommentAdder';
 
@@ -28,8 +28,7 @@ export default function Comment({ articleId }) {
     );
   }
 
-
-const reversedComments = [...comments].reverse();
+  const reversedComments = [...comments].reverse();
 
   return (
     <section className="comments-container">

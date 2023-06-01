@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { fetchArticleById, patchArticleVote } from '../utils';
+import { fetchArticleById, patchArticleVote } from '../api';
 import BeatLoader from 'react-spinners/BeatLoader';
 import Comment from './Comment';
 
@@ -35,7 +35,7 @@ export default function singleArticle() {
 
     setCurrentArticle(updatedArticle);
     patchArticleVote(article_id, +1).catch((err) => {
-      console.log(`Failed to update + vote for ${article_id}`);
+      alert('Failed to update + vote. Please try again.');
     });
 
     return updatedArticle;
@@ -51,7 +51,7 @@ export default function singleArticle() {
 
     setCurrentArticle(updatedArticle);
     patchArticleVote(article_id, -1).catch((err) => {
-      console.log(`Failed to update vote for ${article_id}. Please try again.`);
+      alert('Failed to update - vote. Please try again.');
     });
 
     return updatedArticle;
