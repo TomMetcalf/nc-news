@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchArticles } from '../utils';
+import { fetchArticles } from '../api';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { Link } from 'react-router-dom';
 

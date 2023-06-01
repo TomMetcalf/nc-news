@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { fetchTopics } from '../utils';
+import { fetchTopics } from '../api';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { Link } from 'react-router-dom';
 
-export default function TopicList({ selectedTopic, setSelectedTopic }) {
+export default function TopicList({ setSelectedTopic }) {
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState();
 
