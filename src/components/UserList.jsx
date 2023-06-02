@@ -10,6 +10,7 @@ export default function UserList() {
   const [selectedUser, setSelectedUser] = useState();
   const [userList, setUserList] = useState([]);
   const navigate = useNavigate();
+  console.log(userList);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -17,10 +18,14 @@ export default function UserList() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetchUsers().then((users) => {
-      setUserList(users);
-      setIsLoading(false);
-    });
+    fetchUsers()
+      .then((users) => {
+        return users;
+      })
+      .then((users) => {
+        setUserList(users.users);
+        setIsLoading(false);
+      });
   }, []);
 
   if (isLoading) {
@@ -45,9 +50,7 @@ export default function UserList() {
   return (
     <section>
       <ul>
-        {userList.length === 0
-          ? null
-          : userList.users.map((user) => {
+        { userList.map((user) => {
               return (
                 <li key={user.username}>
                   <section className="user-card">
