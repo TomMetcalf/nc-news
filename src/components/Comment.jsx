@@ -2,10 +2,16 @@ import { useState, useEffect } from 'react';
 import { fetchCommentsByArticleId } from '../api';
 import BeatLoader from 'react-spinners/BeatLoader';
 import CommentAdder from './CommentAdder';
+import { useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
+import DeleteComment from './DeleteComment';
 
 export default function Comment({ articleId }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState();
+  const [deleteId, setDeleteId] = useState();
+
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -59,6 +65,15 @@ export default function Comment({ articleId }) {
               return (
                 <li key={comment_id}>
                   <section className="comments-section">
+                    {user.username === author ? (
+                      <button
+                        onClick={() => {
+                          setDeleteId(comment_id);
+                        }}
+                      >
+                        <DeleteComment deleteId={deleteId} setComment={setComments}/>
+                      </button>
+                    ) : null}
                     <p>{body}</p>
                     <div className="comments-flex">
                       <p className="comment-detail">Posted by: {author}</p>
