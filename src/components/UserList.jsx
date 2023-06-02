@@ -2,19 +2,29 @@ import { useEffect, useState, useContext } from 'react';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { UserContext } from '../contexts/UserContext';
 import { fetchUsers } from '../api';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function UserList() {
   const [isLoading, setIsLoading] = useState();
   const { setUser } = useContext(UserContext);
   const [selectedUser, setSelectedUser] = useState();
   const [userList, setUserList] = useState([]);
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const articleId = searchParams.get('article_id');
 
   useEffect(() => {
     setIsLoading(true);
-    fetchUsers().then((users) => {
-      setUserList(users);
-      setIsLoading(false);
-    });
+    fetchUsers()
+      .then((users) => {
+        return users;
+      })
+      .then((users) => {
+        setUserList(users.users);
+        setIsLoading(false);
+      });
   }, []);
 
   if (isLoading) {
@@ -33,14 +43,15 @@ export default function UserList() {
   const handleUserSelect = (user) => {
     setUser(user);
     setSelectedUser(user.username);
+    if (articleId) {
+    navigate(`/articles/${articleId}`);
+    }
   };
 
   return (
     <section>
       <ul>
-        {userList.length === 0
-          ? null
-          : userList.users.map((user) => {
+        { userList.map((user) => {
               return (
                 <li key={user.username}>
                   <section className="user-card">

@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
 import { postComment } from '../api';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function CommentAdder({ setComments }) {
   const [newComment, setNewComment] = useState('');
@@ -12,6 +12,12 @@ export default function CommentAdder({ setComments }) {
   const [commentAlert, setCommentAlert] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [successfulPost, setSuccessfulPost] = useState(false);
+
+  const history = useNavigate();
+
+  const handleLoginLink = () => {
+    history.push(`/users?article_id=${article_id}`);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,7 +77,11 @@ export default function CommentAdder({ setComments }) {
         <div className="user-warning">
           <p className="comment-warning">
             Please log in as a user to post a comment.
-            <Link className="comment-user-link" to={'/users'}>
+            <Link
+              className="comment-user-link"
+              to={`/users?article_id=${article_id}`}
+              onClick={handleLoginLink}
+            >
               Click to select User
             </Link>
           </p>
@@ -79,7 +89,7 @@ export default function CommentAdder({ setComments }) {
       )}
       {successfulPost && (
         <p className="successful-comment">
-          You're comment was added successfully below!
+          Your comment was added successfully below!
         </p>
       )}
       {commentAlert && (

@@ -53,7 +53,7 @@ export function fetchUsers() {
     .catch((err) => console.log(err));
 }
 
-export function postComment( username, newCommentText, article_id ) {
+export function postComment(username, newCommentText, article_id) {
   const postCommentBody = {
     username: username,
     body: newCommentText,
@@ -63,6 +63,24 @@ export function postComment( username, newCommentText, article_id ) {
     .post(`/articles/${article_id}/comments`, postCommentBody)
     .then((res) => {
       return res.data.comment;
+    })
+    .catch((err) => console.log(err));
+}
+
+export function fetchTopics() {
+  return ncNewsApi
+    .get('/topics')
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => console.log(err));
+}
+
+export function fetchArticlesByTopic(selectedTopic) {
+  return ncNewsApi
+    .get(`/articles?topic=${selectedTopic}`)
+    .then((res) => {
+      return res.data.articles;
     })
     .catch((err) => console.log(err));
 }

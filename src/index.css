@@ -245,13 +245,11 @@ h2 {
   display: flex;
 }
 
-.successful-comment {
-  color: rgb(0, 73, 0);
-  background-color: rgb(213, 252, 213);
+
+.topic-list-card {
+  border: 1px solid rgb(255, 0, 72);
   padding: 10px;
-  font-weight: 600;
-  width: 90%;
-  margin: 0 auto 20px;
+  margin-top: 20px;
 }
 
 @media (max-width: 850px) {
