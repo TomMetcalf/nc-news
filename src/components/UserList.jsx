@@ -10,7 +10,6 @@ export default function UserList() {
   const [selectedUser, setSelectedUser] = useState();
   const [userList, setUserList] = useState([]);
   const navigate = useNavigate();
-  console.log(userList);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -44,7 +43,9 @@ export default function UserList() {
   const handleUserSelect = (user) => {
     setUser(user);
     setSelectedUser(user.username);
+    if (articleId) {
     navigate(`/articles/${articleId}`);
+    }
   };
 
   return (

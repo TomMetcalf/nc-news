@@ -89,7 +89,7 @@ export default function CommentAdder({ setComments }) {
       )}
       {successfulPost && (
         <p className="successful-comment">
-          You're comment was added successfully below!
+          Your comment was added successfully below!
         </p>
       )}
       {commentAlert && (
