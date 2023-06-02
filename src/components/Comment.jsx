@@ -65,15 +65,21 @@ export default function Comment({ articleId }) {
               return (
                 <li key={comment_id}>
                   <section className="comments-section">
-                    {user.username === author ? (
-                      <button
-                        onClick={() => {
-                          setDeleteId(comment_id);
-                        }}
-                      >
-                        <DeleteComment deleteId={deleteId} setComment={setComments}/>
-                      </button>
-                    ) : null}
+                    <div className="delete-btn-container">
+                      {user.username === author ? (
+                        <button
+                          className="delete-btn"
+                          onClick={() => {
+                            setDeleteId(comment_id);
+                          }}
+                        >
+                          <DeleteComment
+                            deleteId={deleteId}
+                            setComments={setComments}
+                          />
+                        </button>
+                      ) : null}
+                    </div>
                     <p>{body}</p>
                     <div className="comments-flex">
                       <p className="comment-detail">Posted by: {author}</p>

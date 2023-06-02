@@ -1,16 +1,23 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { deleteComment } from '../api';
 
 export default function DeleteComment({ deleteId, setComments }) {
-  //console.log(deleteId, 'delete in DC');
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    if (deleteId !== undefined ) {
-  deleteComment(deleteId).then(() => {
-  });
-}
-}, [deleteId]);
-  
+    if (deleteId !== undefined) {
+      deleteComment(deleteId).then((status) => {
+        if (status === 204) {
+          alert('comment successfully deleted.');
+        }
+        setComments((prevComments) =>
+          prevComments.filter((comment) => comment.comment_id !== deleteId)
+        );
+      }).then(() => {
+        setIsDeleting(false);
+      })
+    }
+  }, [deleteId, setComments, isDeleting]);
 
-  return <p>Delete</p>;
+  return <span>Delete</span>;
 }

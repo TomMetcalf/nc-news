@@ -97,7 +97,7 @@ ul {
 .article-image-list {
   height: 200px;
   width: 200px;
-  margin: 10px 0px;
+  margin: 10px 50px;
 }
 
 .article-img {
@@ -106,7 +106,6 @@ ul {
   margin: 0 auto;
 }
 
-.article-details-home,
 .article-headings,
 .comments-flex {
   display: flex;
@@ -196,7 +195,6 @@ h2 {
 }
 
 .avatar-img {
-  height: 150px;
   width: 150px;
   margin: 10px auto;
 }
@@ -245,11 +243,50 @@ h2 {
   display: flex;
 }
 
-
 .topic-list-card {
   border: 1px solid rgb(255, 0, 72);
   padding: 10px;
   margin-top: 20px;
+}
+
+.article-position {
+  display: flex;
+}
+
+.article-details-position {
+  display: flex;
+  flex-direction: column;
+  margin: auto auto;
+}
+
+.sort-order {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sort-order-label {
+  margin-left: 20px;
+}
+
+.sort-order-dropdown {
+  margin-left: 5px;
+}
+
+.successful-comment {
+background-color: rgb(195, 234, 211);
+  color: rgb(10, 103, 0);
+  padding: 10px;
+  font-weight: 600;
+  width: 90%;
+  margin: 0 auto 20px;
+}
+
+.delete-btn-container {
+  overflow: auto;
+}
+
+.delete-btn {
+  float: right;
 }
 
 @media (max-width: 850px) {
@@ -260,6 +297,11 @@ h2 {
     display: flex;
     flex-direction: column;
   }
+
+  .article-position {
+  display: flex;
+  flex-direction: column;
+}
 
   .article-body {
     display: flex;
