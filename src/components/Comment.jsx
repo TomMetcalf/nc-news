@@ -1,25 +1,43 @@
 import { useState, useEffect } from 'react';
-import { fetchCommentsByArticleId } from '../api';
+import { deleteComment, fetchCommentsByArticleId } from '../api';
 import BeatLoader from 'react-spinners/BeatLoader';
 import CommentAdder from './CommentAdder';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
-import DeleteComment from './DeleteComment';
 
 export default function Comment({ articleId }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState();
-  const [deleteId, setDeleteId] = useState();
 
   const { user } = useContext(UserContext);
 
   useEffect(() => {
     setIsLoading(true);
-    fetchCommentsByArticleId(articleId).then((res) => {
-      setComments(res.comment);
-      setIsLoading(false);
-    });
+    fetchCommentsByArticleId(articleId)
+      .then((res) => {
+        setComments(res.comment);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
   }, [articleId]);
+
+  const handleDeleteComment = (deleteId) => {
+    deleteComment(deleteId)
+      .then((status) => {
+        if (status === 204) {
+          alert('Comment successfully deleted.');
+          setComments((prevComments) =>
+            prevComments.filter((comment) => comment.comment_id !== deleteId)
+          );
+        }
+      })
+      .catch((err) => {
+        alert('There was an problem deleting your message. Please try again');
+      });
+  };
 
   if (isLoading) {
     return (
@@ -69,14 +87,9 @@ export default function Comment({ articleId }) {
                       {user.username === author ? (
                         <button
                           className="delete-btn"
-                          onClick={() => {
-                            setDeleteId(comment_id);
-                          }}
+                          onClick={() => handleDeleteComment(comment_id)}
                         >
-                          <DeleteComment
-                            deleteId={deleteId}
-                            setComments={setComments}
-                          />
+                          Delete
                         </button>
                       ) : null}
                     </div>
