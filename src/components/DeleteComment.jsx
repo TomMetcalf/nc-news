@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { deleteComment } from '../api';
 
 export default function DeleteComment({ deleteId, setComments }) {
-  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     if (deleteId !== undefined) {
@@ -13,11 +12,9 @@ export default function DeleteComment({ deleteId, setComments }) {
         setComments((prevComments) =>
           prevComments.filter((comment) => comment.comment_id !== deleteId)
         );
-      }).then(() => {
-        setIsDeleting(false);
       })
     }
-  }, [deleteId, setComments, isDeleting]);
+  }, [deleteId, setComments]);
 
   return <span>Delete</span>;
 }
