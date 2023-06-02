@@ -4,13 +4,13 @@ const ncNewsApi = axios.create({
   baseURL: 'https://nc-news-r5n7.onrender.com/api',
 });
 
-export function fetchArticles() {
+export function fetchArticles(sortBy, order) {
   return ncNewsApi
-    .get('/articles')
-    .then((res) => {
-      return res.data;
-    })
-    .catch((err) => console.log(err));
+      .get(`/articles?sort_by=${sortBy}&order=${order}`)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => console.log(err));
 }
 
 export function fetchArticleById(article_id) {
@@ -53,7 +53,7 @@ export function fetchUsers() {
     .catch((err) => console.log(err));
 }
 
-export function postComment( username, newCommentText, article_id ) {
+export function postComment(username, newCommentText, article_id) {
   const postCommentBody = {
     username: username,
     body: newCommentText,
