@@ -16,7 +16,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: white;
   text-decoration: inherit;
 }
 a:hover,
@@ -49,7 +49,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: white;
 }
 button:focus,
 button:focus-visible {
@@ -57,14 +57,14 @@ button:focus-visible {
 }
 
 .header-text {
-  border: 1px solid skyblue;
+  border: 1px solid white;
   padding: 20px;
 }
 
 .nav {
   display: flex;
   justify-content: space-evenly;
-  border: 1px solid orange;
+  border: 1px solid white;
   padding: 20px;
 }
 
@@ -74,7 +74,7 @@ button:focus-visible {
 }
 
 .article-list {
-  border: 1px solid greenyellow;
+  border: 1px solid white;
   padding: 20px;
   margin-top: 20px;
 }
@@ -89,7 +89,7 @@ ul {
 }
 
 .article-home {
-  border: 1px solid lightcoral;
+  border: 1px solid white;
   padding: 20px;
   margin-top: 20px;
 }
@@ -135,13 +135,13 @@ p.view-article {
 }
 
 .comments-section {
-  border: 1px solid lightseagreen;
+  border: 1px solid white;
   padding: 20px;
   margin-top: 20px;
 }
 
 .article-container {
-  border: 1px solid plum;
+  border: 1px solid white;
   padding: 15px;
   margin-top: 5px;
 }
@@ -164,7 +164,7 @@ h2 {
 }
 
 .comments-container {
-  border: 1px solid yellow;
+  border: 1px solid white;
   padding: 10px;
 }
 
@@ -195,7 +195,6 @@ h2 {
 }
 
 .avatar-img {
-  height: 150px;
   width: 150px;
   margin: 10px auto;
 }
@@ -203,7 +202,7 @@ h2 {
 .user-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid yellow;
+  border: 1px solid white;
   padding: 10px;
   margin-bottom: 20px;
 }
@@ -244,9 +243,8 @@ h2 {
   display: flex;
 }
 
-
 .topic-list-card {
-  border: 1px solid rgb(255, 0, 72);
+  border: 1px solid white;
   padding: 10px;
   margin-top: 20px;
 }
@@ -274,6 +272,26 @@ h2 {
   margin-left: 5px;
 }
 
+.successful-comment {
+  background-color: rgb(195, 234, 211);
+  color: rgb(10, 103, 0);
+  padding: 10px;
+  font-weight: 600;
+  width: 90%;
+  margin: 0 auto 20px;
+}
+
+.delete-btn-container {
+  overflow: auto;
+}
+
+.delete-btn {
+  float: right;
+}
+
+.main-article-list {
+  margin: 15px 0px 0px;
+}
 
 @media (max-width: 850px) {
   .article-details-home,
@@ -285,9 +303,9 @@ h2 {
   }
 
   .article-position {
-  display: flex;
-  flex-direction: column;
-}
+    display: flex;
+    flex-direction: column;
+  }
 
   .article-body {
     display: flex;
@@ -307,7 +325,8 @@ h2 {
     margin-top: 5px;
   }
 
-  .comment-warning, .comment-user-link {
+  .comment-warning,
+  .comment-user-link {
     display: flex;
     flex-direction: column;
   }
