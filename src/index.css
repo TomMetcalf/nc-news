@@ -155,15 +155,15 @@ p.view-article {
   margin: 3px;
 }
 
-.header-text,
 .nav,
 h2 {
   margin: 5px 0px;
   padding: 5px;
+  
 }
 
 .header-text {
-  margin-bottom: 20px;
+  margin: 10px 0;
 }
 
 .article-list {
@@ -336,6 +336,15 @@ h2 {
   .comment-user-link {
     display: flex;
     flex-direction: column;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-link {
+    padding: 5px;
   }
 }
 
