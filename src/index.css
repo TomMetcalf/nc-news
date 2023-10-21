@@ -56,11 +56,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.header-text {
-  /* border: 1px solid white; */
-  padding: 20px;
-}
-
 .nav {
   display: flex;
   justify-content: space-evenly;
@@ -75,8 +70,8 @@ button:focus-visible {
 
 .article-list {
   /* border: 1px solid white; */
-  padding: 20px;
-  margin-top: 20px;
+  margin: 20px auto;
+  width: 80%;
 }
 
 ul {
@@ -159,11 +154,10 @@ p.view-article {
 h2 {
   margin: 5px 0px;
   padding: 5px;
-  
 }
 
 .header-text {
-  margin: 10px 0;
+  margin: 30px 0;
 }
 
 .article-list {
@@ -204,14 +198,17 @@ h2 {
 .avatar-img {
   width: 150px;
   margin: 10px auto;
+  border-radius: 10px;
 }
 
 .user-card {
   display: flex;
   flex-direction: column;
   border: 1px solid white;
+  border-radius: 10px;
   padding: 10px;
-  margin-bottom: 20px;
+  width: 80%;
+  margin: 20px auto;
 }
 
 .select-user-btn {
@@ -252,8 +249,10 @@ h2 {
 
 .topic-list-card {
   border: 1px solid white;
+  border-radius: 10px;
   padding: 10px;
-  margin-top: 20px;
+  width: 80%;
+  margin: 20px auto;
 }
 
 .article-position {
@@ -319,6 +318,11 @@ h2 {
     padding: 10px 0px 30px;
   }
 
+  .article-image-list {
+    width: 250px;
+    margin: 0;
+  }
+
   h2 {
     margin-top: 20px;
   }
@@ -355,7 +359,17 @@ h2 {
   }
 
   .sort-order {
-  display: flex;
-  flex-direction: column;
-}
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .sort-order-dropdown {
+    margin-top: 5px;
+  }
+
+  .header-text {
+    margin: 0px;
+  }
 }
