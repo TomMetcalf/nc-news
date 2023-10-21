@@ -8,13 +8,17 @@ import TopicFilteredList from './components/TopicFilteredList';
 import Article from './components/Article';
 import UserList from './components/UserList';
 import { useState } from 'react';
+import { useTheme } from './contexts/ThemeContext';
+import LightModeToggle from './components/LightModeToggle';
 
 function App() {
   const [selectedTopic, setSelectedTopic] = useState('');
+  const { isDarkMode } = useTheme();
 
   return (
-    <div>
+    <div className={`app ${isDarkMode ? 'dark-mode' : ''}`}>
       <BrowserRouter>
+        <LightModeToggle />
         <Header />
         <Nav />
         <Routes>
