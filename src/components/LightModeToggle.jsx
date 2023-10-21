@@ -8,7 +8,7 @@ export default function LightModeToggle() {
       {isDarkMode ? (
         <>
           <i className="fa fa-sun lightmode-icon" aria-hidden="true"></i>
-          <span>Light Mode</span>
+          <span className='lightmode-text'>Light Mode</span>
         </>
       ) : (
         <>
@@ -16,7 +16,7 @@ export default function LightModeToggle() {
             className="fa 
           fa-moon-o lightmode-icon"
           ></i>
-          <span>Dark Mode</span>
+          <span className='lightmode-text'>Dark Mode</span>
         </>
       )}
     </a>

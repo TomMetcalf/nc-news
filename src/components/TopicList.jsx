@@ -21,14 +21,17 @@ export default function TopicList({ setSelectedTopic }) {
 
   if (isLoading) {
     return (
-      <BeatLoader
-        color={'#ffffff'}
-        loading={isLoading}
-        size={30}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-        margin={20}
-      />
+      <>
+        <BeatLoader
+          color={'#ffffff'}
+          loading={isLoading}
+          size={30}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+          margin={20}
+        />
+        <p>Loading Topics...</p>
+      </>
     );
   }
 
@@ -43,7 +46,7 @@ export default function TopicList({ setSelectedTopic }) {
               <section className="topic-list-card">
                 <h2>{slug}</h2>
                 <p>{description}</p>
-                <Link
+                <Link className='topic-link'
                   to={`/topics/${slug}`}
                   onClick={() => {
                     setSelectedTopic(slug);

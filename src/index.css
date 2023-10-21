@@ -26,7 +26,12 @@
 .lightmode-icon {
   font-size: 20px;
   padding-right: 10px;
-  padding-top: 2px;
+  cursor: pointer;
+}
+
+.lightmode-text {
+  font-size: 12px;
+  cursor: pointer;
 }
 
 a {
@@ -34,9 +39,9 @@ a {
   color: white;
   text-decoration: inherit;
 }
-a:hover,
+
 .article-title-link:hover {
-  color: skyblue;
+  text-decoration: underline;
 }
 
 body {
@@ -88,6 +93,14 @@ button:focus-visible {
 .nav-link {
   padding: 0 20px;
   color: rgba(255, 255, 255, 0.87);
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+span.nav-link:hover {
+  text-decoration: none;
 }
 
 .article-list {
@@ -149,8 +162,16 @@ div.article-headings {
   margin-top: 10px;
 }
 
+.main-article-link:hover {
+  text-decoration: underline;
+}
+
 p.view-article {
   margin: 10px;
+}
+
+.view-article:hover {
+  text-decoration: underline;
 }
 
 .comments-section {
@@ -180,9 +201,15 @@ h2 {
   padding: 5px;
 }
 
+h2.artle-title-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .header-text {
   margin: 0;
-  padding-bottom: 30px
+  padding-bottom: 30px;
+  cursor: pointer;
 }
 
 .article-list {
@@ -200,6 +227,7 @@ h2 {
   margin: 20px auto;
   padding: 10px;
   font-size: 1rem;
+  border-radius: 10px;
 }
 
 .comment-form {
@@ -257,6 +285,7 @@ h2 {
   font-weight: 600;
   width: 90%;
   margin: 0 auto 20px;
+  border-radius: 10px;
 }
 
 .comment-user-link {
@@ -312,6 +341,7 @@ h2 {
   font-weight: 600;
   width: 90%;
   margin: 0 auto 20px;
+  border-radius: 10px;
 }
 
 .delete-btn-container {
@@ -326,9 +356,21 @@ h2 {
   margin: 0 0 50px;
 }
 
+.main-article-list:hover {
+  text-decoration: underline;
+}
+
 button {
   color: #242424;
   background-color: white;
+}
+
+button:hover {
+  scale: 1.03;
+}
+
+.topic-link:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 850px) {
@@ -404,9 +446,9 @@ button {
     padding: 0px;
   }
 
-   .article-img {
-     margin: 0 auto;
-   }
+  .article-img {
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 650px) {

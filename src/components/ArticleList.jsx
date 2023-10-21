@@ -23,14 +23,17 @@ export default function ArticleList() {
 
   if (isLoading) {
     return (
-      <BeatLoader
-        color={'#ffffff'}
-        loading={isLoading}
-        size={30}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-        margin={20}
-      />
+      <>
+        <BeatLoader
+          color={'#ffffff'}
+          loading={isLoading}
+          size={30}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+          margin={20}
+        />
+        <p>Loading Articles...</p>
+      </>
     );
   }
 
