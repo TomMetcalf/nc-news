@@ -351,5 +351,11 @@ h2 {
 @media (max-width: 400px) {
   .article-image-list {
     width: 200px;
+    margin: 0;
   }
+
+  .sort-order {
+  display: flex;
+  flex-direction: column;
+}
 }
