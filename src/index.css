@@ -20,11 +20,13 @@
 
 .light-mode-toggle {
   display: flex;
-
-  width: 250px;
   padding: 20px;
+}
 
-
+.lightmode-icon {
+  font-size: 20px;
+  padding-right: 10px;
+  padding-top: 2px;
 }
 
 a {
@@ -118,8 +120,8 @@ ul {
 }
 
 .article-img {
-  height: 300px;
-  margin: 0 auto;
+  width: 400px;
+  margin: 20px auto;
   border-radius: 10px;
   border: 1px solid white;
 }
@@ -401,6 +403,10 @@ button {
     margin: 0px;
     padding: 0px;
   }
+
+   .article-img {
+     margin: 0 auto;
+   }
 }
 
 @media (max-width: 650px) {

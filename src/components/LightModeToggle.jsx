@@ -5,7 +5,20 @@ export default function LightModeToggle() {
 
   return (
     <a onClick={toggleTheme} className="light-mode-toggle">
-      {isDarkMode ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+      {isDarkMode ? (
+        <>
+          <i className="fa fa-sun lightmode-icon" aria-hidden="true"></i>
+          <span>Light Mode</span>
+        </>
+      ) : (
+        <>
+          <i
+            className="fa 
+          fa-moon-o lightmode-icon"
+          ></i>
+          <span>Dark Mode</span>
+        </>
+      )}
     </a>
   );
 }
