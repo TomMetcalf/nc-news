@@ -3,45 +3,25 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* Light mode colors */
-  --text-color: white;
-  --background-color: #242424;
-
   /* Dark mode colors */
-  --text-color-dark: #242424;
-  --background-color-dark: white;
+  --text-color-dark: white;
+  --background-color-dark: #242424;
+  --border-color-dark: white;
+  --button-color-dark: white;
+  --button-text-color-dark: #242424;
+
+  /* Light mode colors */
+  --text-color: #242424;
+  --background-color: white;
+  --border-color: #242424;
+  --button-color: #242424;
+  --button-text-color: white;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-}
-
-.light-mode-toggle {
-  display: flex;
-  padding: 20px;
-}
-
-.lightmode-icon {
-  font-size: 20px;
-  padding-right: 10px;
-  cursor: pointer;
-}
-
-.lightmode-text {
-  font-size: 12px;
-  cursor: pointer;
-}
-
-a {
-  font-weight: 500;
-  color: white;
-  text-decoration: inherit;
-}
-
-.article-title-link:hover {
-  text-decoration: underline;
 }
 
 body {
@@ -59,9 +39,42 @@ body {
   background-color: var(--background-color-dark);
 }
 
+.app.dark-mode .lightmode-text, .app.dark-mode .lightmode-icon, .app.dark-mode a, .app.dark-mode h1, .app.dark-mode h2, .app.dark-mode .nav-link, .app.dark-mode .sort-order-dropdown{
+  color: var(--text-color-dark);
+  background-color: (var(--background-color-dark));
+}
+
+.app.dark-mode button {
+  color: var(--button-text-color-dark);
+  background-color: var(--button-color-dark);
+}
+
+.app.dark-mode .article-home, .app.dark-mode .topic-list-card, .app.dark-mode .user-card, .app.dark-mode .comments-section {
+  border: 1px solid var(--border-color-dark);
+}
+
+.light-mode-toggle {
+  display: flex;
+  padding: 20px;
+}
+
+.lightmode-icon {
+  font-size: 20px;
+  padding-right: 10px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.lightmode-text {
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: var(--text-color);
 }
 
 button {
@@ -71,28 +84,36 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  color: var(--button-text-color);
+  background-color: var(--button-color);
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
-  border-color: white;
+  scale: 1.03;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+a {
+  font-weight: 500;
+  color: var(--text-color);
+  text-decoration: inherit;
+}
+
 .nav {
   display: flex;
   justify-content: space-evenly;
-  /* border: 1px solid white; */
   padding: 20px;
 }
 
 .nav-link {
   padding: 0 20px;
-  color: rgba(255, 255, 255, 0.87);
+  color: var(--text-color);
 }
 
 .nav-link:hover {
@@ -114,12 +135,8 @@ ul {
   list-style: none;
 }
 
-.article-title-link {
-  color: rgba(255, 255, 255, 0.87);
-}
-
 .article-home {
-  border: 1px solid white;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 20px;
   margin-top: 20px;
@@ -166,6 +183,10 @@ div.article-headings {
   text-decoration: underline;
 }
 
+.article-title-link:hover {
+  text-decoration: underline;
+}
+
 p.view-article {
   margin: 10px;
 }
@@ -175,7 +196,7 @@ p.view-article {
 }
 
 .comments-section {
-  border: 1px solid white;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 20px;
   margin-top: 20px;
@@ -257,7 +278,7 @@ h2.artle-title-link:hover {
 .user-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid white;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 10px;
   width: 80%;
@@ -302,7 +323,7 @@ h2.artle-title-link:hover {
 }
 
 .topic-list-card {
-  border: 1px solid white;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 10px;
   width: 80%;
@@ -332,6 +353,8 @@ h2.artle-title-link:hover {
 .sort-order-dropdown {
   margin-left: 5px;
   width: 150px;
+  border-radius: 5px;
+  padding-left: 5px;
 }
 
 .successful-comment {
@@ -358,15 +381,6 @@ h2.artle-title-link:hover {
 
 .main-article-list:hover {
   text-decoration: underline;
-}
-
-button {
-  color: #242424;
-  background-color: white;
-}
-
-button:hover {
-  scale: 1.03;
 }
 
 .topic-link:hover {

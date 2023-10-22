@@ -7,16 +7,13 @@ export default function LightModeToggle() {
     <a onClick={toggleTheme} className="light-mode-toggle">
       {isDarkMode ? (
         <>
-          <i className="fa fa-sun lightmode-icon" aria-hidden="true"></i>
-          <span className='lightmode-text'>Light Mode</span>
+          <i className="fa fa-moon-o lightmode-icon" aria-hidden="true"></i>
+          <span className="lightmode-text">Dark Mode</span>
         </>
       ) : (
         <>
-          <i
-            className="fa 
-          fa-moon-o lightmode-icon"
-          ></i>
-          <span className='lightmode-text'>Dark Mode</span>
+          <i className="fa fa-sun lightmode-icon"></i>
+          <span className="lightmode-text">Light Mode</span>
         </>
       )}
     </a>
