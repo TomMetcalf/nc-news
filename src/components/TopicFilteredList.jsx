@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchArticlesByTopic } from '../api';
 import { Link, useParams } from 'react-router-dom';
 import BeatLoader from 'react-spinners/BeatLoader';
+import BackToTop from './BackToTop';
 
 export default function TopicFilteredList() {
   const [articles, setArticles] = useState([]);
@@ -64,7 +65,7 @@ export default function TopicFilteredList() {
 
           return (
             <li key={article_id}>
-              <article className="article-home">
+              <article className="article-home article-list">
                 <Link to={`/articles/${article.article_id}`}>
                   <h2 className="article-title-link">{title}</h2>
                 </Link>
@@ -93,6 +94,7 @@ export default function TopicFilteredList() {
           );
         })}
       </ul>
+      <BackToTop />
     </main>
   );
 }

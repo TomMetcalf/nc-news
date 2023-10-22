@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchTopics } from '../api';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { Link } from 'react-router-dom';
+import BackToTop from './BackToTop';
 
 export default function TopicList({ setSelectedTopic }) {
   const [topics, setTopics] = useState([]);
@@ -36,29 +37,31 @@ export default function TopicList({ setSelectedTopic }) {
   }
 
   return (
-    <main>
-      <ul>
-        {topics.map((topic) => {
-          const { slug, description } = topic;
+      <main>
+        <ul>
+          {topics.map((topic) => {
+            const { slug, description } = topic;
 
-          return (
-            <li key={slug}>
-              <section className="topic-list-card">
-                <h2>{slug}</h2>
-                <p>{description}</p>
-                <Link className='topic-link'
-                  to={`/topics/${slug}`}
-                  onClick={() => {
-                    setSelectedTopic(slug);
-                  }}
-                >
-                  View articles on this topic
-                </Link>
-              </section>
-            </li>
-          );
-        })}
-      </ul>
-    </main>
+            return (
+              <li key={slug}>
+                <section className="topic-list-card">
+                  <h2>{slug}</h2>
+                  <p>{description}</p>
+                  <Link
+                    className="topic-link"
+                    to={`/topics/${slug}`}
+                    onClick={() => {
+                      setSelectedTopic(slug);
+                    }}
+                  >
+                    View articles on this topic
+                  </Link>
+                </section>
+              </li>
+            );
+          })}
+        </ul>
+      <BackToTop />
+      </main>
   );
 }

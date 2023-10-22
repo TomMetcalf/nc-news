@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchArticles } from '../api';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { Link } from 'react-router-dom';
+import BackToTop from './BackToTop';
 
 export default function ArticleList() {
   const [articleList, setArticleList] = useState([]);
@@ -131,6 +132,7 @@ export default function ArticleList() {
           );
         })}
       </ul>
+      <BackToTop />
     </main>
   );
 }

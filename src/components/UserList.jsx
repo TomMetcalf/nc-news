@@ -3,6 +3,7 @@ import BeatLoader from 'react-spinners/BeatLoader';
 import { UserContext } from '../contexts/UserContext';
 import { fetchUsers } from '../api';
 import { useNavigate, useLocation } from 'react-router-dom';
+import BackToTop from './BackToTop';
 
 export default function UserList() {
   const [isLoading, setIsLoading] = useState();
@@ -47,38 +48,39 @@ export default function UserList() {
     setUser(user);
     setSelectedUser(user.username);
     if (articleId) {
-    navigate(`/articles/${articleId}`);
+      navigate(`/articles/${articleId}`);
     }
   };
 
   return (
     <section>
       <ul>
-        { userList.map((user) => {
-              return (
-                <li key={user.username}>
-                  <section className="user-card">
-                    <h2>Username: {user.username}</h2>
-                    <h3>Name: {user.name}</h3>
-                    <img
-                      className="avatar-img"
-                      src={user.avatar_url}
-                      alt={user.name}
-                    />
-                    <button
-                      onClick={() => handleUserSelect(user)}
-                      className="select-user-btn"
-                    >
-                      Select this user
-                    </button>
-                    {selectedUser === user.username && (
-                      <p>User {selectedUser} logged in.</p>
-                    )}
-                  </section>
-                </li>
-              );
-            })}
+        {userList.map((user) => {
+          return (
+            <li key={user.username}>
+              <section className="user-card">
+                <h2>Username: {user.username}</h2>
+                <h3>Name: {user.name}</h3>
+                <img
+                  className="avatar-img"
+                  src={user.avatar_url}
+                  alt={user.name}
+                />
+                <button
+                  onClick={() => handleUserSelect(user)}
+                  className="select-user-btn"
+                >
+                  Select this user
+                </button>
+                {selectedUser === user.username && (
+                  <p>User {selectedUser} logged in.</p>
+                )}
+              </section>
+            </li>
+          );
+        })}
       </ul>
+      <BackToTop />
     </section>
   );
 }

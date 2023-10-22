@@ -12,7 +12,7 @@ export default function LightModeToggle() {
         </>
       ) : (
         <>
-          <i className="fa fa-sun lightmode-icon"></i>
+          <i className="fa-regular fa-sun lightmode-icon"></i>
           <span className="lightmode-text">Light Mode</span>
         </>
       )}
